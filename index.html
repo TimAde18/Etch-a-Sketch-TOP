@@ -10,6 +10,25 @@
 
 </head>
 <body>
+    <div id="etch-container">
+        <div id="title-container">
+            <h1 id="title">Etch-a-Sketch</h1>
+        </div>
+        <div id="color-container">
+            <button id="black" class="colors">Black</button>
+            <button id="mystery" class="colors">Mystery</button>
+            <button id="rainbow" class="colors">Rainbow</button>
+        </div>
+        <div id="grid-container"></div>
+        <div id="size-container">
+            <button id="16" class="gridsize">16x16</button>
+            <button id="32" class="gridsize">32x32</button>
+            <button id="64" class="gridsize">64x64</button>
+        </div>
+        <div id="thickness-container">
+            <input type="range" min="25" max="100" step="25" value="25" id="thickness-slider">
+        </div>
+    </div>
     <script src="sketch.js"></script>
 </body>
 </html>
