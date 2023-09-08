@@ -2,6 +2,7 @@
 const gridContainer = document.getElementById("grid-container");
 //function for 16 x 16 board 
 function gridBoard (rowNum, colNum) {
+    gridContainer.style.gridTemplateColumns = `repeat(${rowNum}), 1fr`;
     for(let i=0; i< rowNum; i++) {
         const gridRow = document.createElement("div");
         gridRow.classList.add("row");
@@ -16,20 +17,29 @@ function gridBoard (rowNum, colNum) {
 
 gridBoard(16, 16);
 
+//functions for the size buttons 
+const smallGrid = document.getElementById("16");
+
 //function for hovering over cells
 
-let mouseDown = false;
-document.body.onmousedown = () => (mouseDown = true);
-document.body.onmouseup = () => (mouseDown = false);
+const cells = document.querySelectorAll(".cell");
 
 function mouseStencil (color) {
-    const grids = document.querySelectorAll(".cell");
-    gridContainer.addEventListener("mouseover", (e) => {
-        if(mouseDown) {
-            const target = e.target;
-            target.style.backgroundColor = color;
-        }
+    cells.forEach((cell) => {
+        cell.addEventListener("mouseover", () => {
+            cell.style.backgroundColor = color;
+        })
     })
 };
 
 mouseStencil("black");
+
+//function reset board
+function resetGrid() {
+    cells.forEach((cell) => {
+        cell.style.backgroundColor = "white";
+    })
+}
+
+const resetBtn = document.getElementById("reset");
+resetBtn.addEventListener("click", resetGrid);
