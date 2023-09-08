@@ -1,0 +1,19 @@
+/*Styling for the grid board*/
+#grid-container {
+    border: 5px solid red ;
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    height: 500px;
+    width: 500px;
+}
+
+.row {
+    border: 1px solid black;
+    display: grid;
+    
+} 
+
+.cell {
+    border: 1px solid black;
+    height: auto;
+}
