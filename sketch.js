@@ -46,6 +46,9 @@ midGridBtn.addEventListener("click", function () {
     gridSize(32);
 });
 
+//functions for the size buttons 
+const smallGrid = document.getElementById("16");
+
 //function for hovering over cells
 
 function mousePencil (color) {
