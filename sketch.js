@@ -28,26 +28,36 @@ function gridSize (num) {
         grids = document.querySelectorAll(".cell");
         console.log(grids)
         numberOfCell = num;
+        console.log(numberOfCell);
+        resetGrid();
     } else {
         alert("You have chosen this already");
+        resetGrid();
     }
-    resetGrid();
 }
-console.log(numberOfCell);
+
+//functions for the size buttons 
 
 
 const smallGridBtn = document.getElementById("16");
 smallGridBtn.addEventListener("click", function () {
     gridSize(16);
+    mousePencil("black");
 });
 
 const midGridBtn = document.getElementById("32");
 midGridBtn.addEventListener("click", function () {
     gridSize(32);
+    mousePencil("black");
 });
 
-//functions for the size buttons 
-const smallGrid = document.getElementById("16");
+const larGridBtn = document.getElementById("64");
+larGridBtn.addEventListener("click", function() {
+    gridSize(64);
+    //default value of black
+    mousePencil("black");
+})
+
 
 //function for hovering over cells
 
@@ -57,14 +67,46 @@ function mousePencil (color) {
         cell.addEventListener("mouseover", (e) => {
             e.target.style.backgroundColor = color;
         });
-    })
+    });
 };
+
+function randomMousePencil() {
+    let letters = "123456789ABCDEF";
+    let newColor = "#";
+    for (let i=0; i < 6; i++) {
+        newColor += letters[Math.floor(Math.random() *16)];
+    }
+    return newColor;
+}
+
+function rainbowMousePencil () {
+    grids.forEach((cell) => {
+        cell.addEventListener("mouseover", (e) => {
+            e.target.style.backgroundColor = randomMousePencil();
+        })
+    })
+}
 
 //function for color buttons
 const blackBtn = document.getElementById("black");
 blackBtn.addEventListener("click", function () {
+    resetGrid();
     mousePencil("black");
 });
+
+const mysteryBtn = document.getElementById("mystery");
+mysteryBtn.addEventListener("click", () => {
+    resetGrid();
+    mousePencil(randomMousePencil());
+})
+
+const rainbowBtn = document.getElementById("rainbow");
+rainbowBtn.addEventListener("click", () => {
+    resetGrid();
+    rainbowMousePencil();
+})
+
+
 
 
 //function for reset
@@ -77,3 +119,9 @@ function resetGrid() {
 
 const resetBtn = document.getElementById("reset");
 resetBtn.addEventListener("click", resetGrid);
+
+//default grid setting 
+window.onload = () => {
+    gridSize(16);
+    mousePencil("black");
+}

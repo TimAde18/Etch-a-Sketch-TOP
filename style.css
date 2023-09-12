@@ -2,8 +2,9 @@
 #grid-container {
     border: 5px solid red ;
     display: grid;
-    height: 500px;
-    width: 500px;
+    height: 50vh;
+    width: 25vw;
+    grid-area: board;
 }
 
 .row {
@@ -11,6 +12,81 @@
 } 
 
 .cell {
-    border: 1px solid black;
     height: auto;
+}
+
+/*General Styling*/
+body {
+    font-family: "Press Start 2P", cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: bisque;
+}
+
+button {
+    font-family: "Press Start 2P", cursive;
+    border: 1px solid black;
+    padding: 10px;
+    box-shadow: 0.5vw 0.5vh 2px lightgray;
+}
+
+button:hover {
+    position: relative;
+    top: 0.5vh;
+    left: 0.5vw;
+    box-shadow: none;
+    background-color: black;
+    color: whitesmoke;
+}
+
+/*Etch a Sketch Container*/
+#etch-container {
+    display: grid;
+    grid-template-columns: auto 510px auto;
+    grid-template-rows: auto auto auto;
+    grid-template-areas: 
+    "title title title" 
+    "colors board sizes"
+    "reset reset reset";
+    background-color: lightcoral;
+    width: 50vw;
+    height: 74vh;
+    justify-content: center;
+    box-shadow: 1vw 1vh 2px lightgray;
+    margin-top: 1vw;
+}
+
+#title-container {
+    grid-area: title;
+    display: flex;
+    justify-content: center;
+}
+
+#color-container {
+    grid-area: colors;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin-right: 5vw;
+}
+
+#size-container {
+    grid-area: sizes;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin-left: 5vw;
+}
+
+#reset-container {
+    grid-area: reset;
+    display: flex;
+    justify-content: center;
+}
+
+#reset {
+    margin: 1vw;
 }
