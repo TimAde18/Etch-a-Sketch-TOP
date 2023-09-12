@@ -32,6 +32,11 @@ button {
 }
 
 button:hover {
+    background-color: black;
+    color: whitesmoke;
+}
+
+button:active {
     position: relative;
     top: 0.5vh;
     left: 0.5vw;
